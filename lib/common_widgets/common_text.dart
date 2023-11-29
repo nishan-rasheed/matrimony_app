@@ -22,7 +22,7 @@ class CommonText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(text,
-       textAlign: textAlign,
+       textAlign: textAlign??TextAlign.center,
         style:textStyle??
          TextStyle(
           fontSize: fontSize,

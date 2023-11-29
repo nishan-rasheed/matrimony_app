@@ -8,7 +8,7 @@ class AppStyle {
 
 //12-400
 static TextStyle style12w400Style = TextStyle(
-  color: AppColor.textGreyColor,
+  color: const Color.fromARGB(255, 171, 171, 171),
   fontSize: 12.sp,
   fontWeight: FontWeight.w400,
 );    

@@ -4,12 +4,8 @@ import 'package:matrimony/common_widgets/common_text.dart';
 import 'package:matrimony/utils/constants/app_style.dart';
 import 'package:matrimony/utils/constants/colors.dart';
 
-class CommonButton extends StatelessWidget {
-  const CommonButton({super.key, 
-  this.height, 
-  this.width, 
-  required this.text, 
-  this.onTap, this.loading});
+class CommonOutlinedButton extends StatelessWidget {
+  const CommonOutlinedButton({super.key, this.height, this.width, required this.text, this.onTap, this.loading});
 
   final double? height;
   final double? width;
@@ -27,16 +23,13 @@ class CommonButton extends StatelessWidget {
         width: width??1.sw,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30.r),
-          gradient:const LinearGradient(colors: [
-            AppColor.buttondarkColor,
-            AppColor.buttonlightColor
-          ])
+          border: Border.all(color: AppColor.buttondarkColor)
         ),
         child:
         (loading??false)?
         const CircularProgressIndicator():
-        CommonText(text: text,
-        textStyle: AppStyle.style15w400Style,
+         CommonText(text: text,
+        textStyle: AppStyle.style15w400Style.copyWith(color: AppColor.buttondarkColor),
         ),
       ),
     );
