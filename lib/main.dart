@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:matrimony/modules/authentication/presentation/controller/auth_controller.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/splash_screen.dart';
 import 'package:matrimony/modules/home/presentation/controller/filter_controller.dart';
 import 'package:matrimony/modules/profile/presentation/controller/profile_controller.dart';
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => FilterController(),),
         ChangeNotifierProvider(create: (context) => ProfileController(),),
+        ChangeNotifierProvider(create: (context) => AuthController(),),
       ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),
