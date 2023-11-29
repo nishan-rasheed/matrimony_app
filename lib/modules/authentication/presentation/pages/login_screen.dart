@@ -4,7 +4,7 @@ import 'package:matrimony/common_widgets/common_button.dart';
 import 'package:matrimony/common_widgets/common_text.dart';
 import 'package:matrimony/common_widgets/common_textfield.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/signup_screen.dart';
-import 'package:matrimony/modules/home/presentation/pages/products_page.dart';
+import 'package:matrimony/modules/home/presentation/pages/home_screen.dart';
 import 'package:matrimony/utils/constants/app_assets.dart';
 import 'package:matrimony/utils/constants/app_style.dart';
 import 'package:matrimony/utils/constants/colors.dart';

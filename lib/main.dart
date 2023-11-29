@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/splash_screen.dart';
+import 'package:matrimony/modules/home/presentation/controller/filter_controller.dart';
+import 'package:matrimony/modules/profile/presentation/controller/profile_controller.dart';
 import 'package:matrimony/utils/constants/colors.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   await ScreenUtil.ensureScreenSize();
@@ -13,20 +16,31 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(390, 844),
-      builder: (context,child) {
-        return MaterialApp(
-          
-          title: 'matrimony appssfsfh',
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            scaffoldBackgroundColor: AppColor.backgroundColr,
-            primarySwatch: Colors.blue
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => FilterController(),),
+        ChangeNotifierProvider(create: (context) => ProfileController(),),
+      ],
+      child: ScreenUtilInit(
+        designSize: const Size(390, 844),
+        builder: (context,child) {
+          return GestureDetector(
+            onTap: () {
+              FocusManager.instance.primaryFocus?.unfocus();
+            },
+            child: MaterialApp(
+              
+              title: 'matrimony appssfsfh',
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                scaffoldBackgroundColor: AppColor.backgroundColr,
+                primarySwatch: Colors.blue
+                ),
+              home: const SplashScreen(),
             ),
-          home: const SplashScreen(),
-        );
-      }
+          );
+        }
+      ),
     );
   }
 }

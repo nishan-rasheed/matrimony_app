@@ -6,8 +6,6 @@ class AppColor {
   static const buttonlightColor = Color(0xfffe7247);
   static const textGreyColor = Color(0xffd8d8d8);
   static const cWhite = Colors.white;
-  static const c1 = Colors.red;
-  static const c2 = Colors.green;
-  static const c3 = Colors.amber;
-  static const c4 = Colors.teal;
+  static const cBlack = Colors.black;
+  static const cGrey = Colors.grey;
 }

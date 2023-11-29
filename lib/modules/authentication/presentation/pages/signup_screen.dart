@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:matrimony/common_widgets/common_button.dart';
+import 'package:matrimony/common_widgets/common_outlined_button.dart';
 import 'package:matrimony/common_widgets/common_text.dart';
 import 'package:matrimony/common_widgets/common_textfield.dart';
 import 'package:matrimony/utils/constants/app_assets.dart';
@@ -23,12 +24,31 @@ class SignUpScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding:  EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(AppAssets.homeImage,
-              height: 200.w,width: 200.w,
+              Center(
+                child: Image.asset(AppAssets.homeImage,
+                height: 200.w,width: 200.w,
+                ),
               ),
-              100.verticalSpace,
+              50.verticalSpace,
+              CommonText(text: 'Iam a',
+              textStyle: AppStyle.style16w500Style,
+              ),
+              10.verticalSpace,
+              Row(mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CommonOutlinedButton(text: 'Women',
+                  width: 120.w,height: 40.h,
+                  ),
+                  10.horizontalSpace,
+                  CommonOutlinedButton(text: 'Men',
+                  width: 120.w,height: 40.h,
+                  ),
+                ],
+              ),
+              20.verticalSpace,
+
               CommonTextField(hintText: 'Full name',),
                10.verticalSpace,
               CommonTextField(hintText: 'email address',),

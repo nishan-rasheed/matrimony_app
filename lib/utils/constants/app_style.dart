@@ -18,6 +18,22 @@ static TextStyle style15w400Style = TextStyle(
   color: AppColor.cWhite,
   fontSize: 15.sp,
   fontWeight: FontWeight.w400,
-);  
+); 
+
+//16-400
+static TextStyle style16w500Style = TextStyle(
+  color: AppColor.cBlack,
+  fontSize: 16.sp,
+  fontWeight: FontWeight.w500,
+);
+
+
+//18-400
+static TextStyle style18w600Style = TextStyle(
+  color: AppColor.cBlack,
+  fontSize: 18.sp,
+  fontWeight: FontWeight.w500,
+);
+
 
 }
