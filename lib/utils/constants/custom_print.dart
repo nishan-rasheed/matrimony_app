@@ -1,3 +1,3 @@
 customPrint(String text){
-  print(text);
+  print('*******$text***********');
 }

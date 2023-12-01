@@ -1,5 +1,7 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:matrimony/firebase_options.dart';
 import 'package:matrimony/modules/authentication/presentation/controller/auth_controller.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/splash_screen.dart';
 import 'package:matrimony/modules/home/presentation/controller/filter_controller.dart';
@@ -9,6 +11,9 @@ import 'package:provider/provider.dart';
 
 void main() async{
   await ScreenUtil.ensureScreenSize();
+   await Firebase.initializeApp(
+   options: DefaultFirebaseOptions.currentPlatform,
+ );
   runApp(const MyApp());
 }
 

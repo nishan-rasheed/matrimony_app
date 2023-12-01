@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "693943412666",
+    "project_id": "matrimony-94986",
+    "storage_bucket": "matrimony-94986.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693943412666:android:fd323e2d0cbc312f29df83",
+        "android_client_info": {
+          "package_name": "com.nishan.matrimony"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCGoBpn3JfU_IKU_Aj0PNWyZ-zx_20VcU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
