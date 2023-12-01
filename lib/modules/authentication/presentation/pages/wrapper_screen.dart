@@ -14,6 +14,7 @@ class WrapperScreen extends StatelessWidget {
     return StreamBuilder<User?>(
       stream: fA.authStateChanges(), 
       builder: (context, snapshot) {
+        customPrint(snapshot.data?.email.toString()??'dhgvdmjhvdmjhd');
         if (snapshot.hasData) {
           customPrint(snapshot.data?.email??'');
            return HomeScreen();

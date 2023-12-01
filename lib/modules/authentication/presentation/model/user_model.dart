@@ -4,7 +4,11 @@
 
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 UserDataModel userDataModelFromJson(String str) => UserDataModel.fromJson(json.decode(str));
+
+// List<UserDataModel> profileModelFromDocument(String str) => List<UserDataModel>.from(json.decode(str).map((x) => UserDataModel.fromDocumentSnapshot(x)));
 
 String userDataModelToJson(UserDataModel data) => json.encode(data.toJson());
 
@@ -74,4 +78,27 @@ class UserDataModel {
         "familyInfo": familyInfo,
         "image": image,
     };
+
+
+
+    factory UserDataModel.fromMap(Map<String, dynamic> map){
+      return UserDataModel(
+        fullName: map['fullName'],
+        email: map['email'],
+        phoneNumber: map['phoneNumber'],
+        password: map['password'],
+        gender: map['gender'],
+        height: map['height'],
+        weight: map['weight'],
+        age: map['age'],
+        country: map['country'],
+        state: map['state'],
+        city: map['city'],
+        address: map['address'],
+        familyInfo: map['familyInfo'],
+        image: map['image'],
+
+      );
+     }
+
 }

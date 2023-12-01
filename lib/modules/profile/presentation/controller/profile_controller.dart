@@ -17,6 +17,11 @@ XFile? pickedImage;
        customPrint(e.toString());
    }
   } 
+
+
+  getProfileDetails(){
+    
+  }
  
 
 }

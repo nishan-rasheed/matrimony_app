@@ -5,6 +5,7 @@ import 'package:matrimony/firebase_options.dart';
 import 'package:matrimony/modules/authentication/presentation/controller/auth_controller.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/splash_screen.dart';
 import 'package:matrimony/modules/home/presentation/controller/filter_controller.dart';
+import 'package:matrimony/modules/home/presentation/controller/home_controller.dart';
 import 'package:matrimony/modules/profile/presentation/controller/profile_controller.dart';
 import 'package:matrimony/utils/constants/colors.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => FilterController(),),
         ChangeNotifierProvider(create: (context) => ProfileController(),),
         ChangeNotifierProvider(create: (context) => AuthController(),),
+        ChangeNotifierProvider(create: (context) => HomeController(),),
       ],
       child: ScreenUtilInit(
         designSize: const Size(390, 844),

@@ -1,7 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:matrimony/common_widgets/common_text.dart';
 import 'package:matrimony/modules/authentication/presentation/controller/auth_controller.dart';
+import 'package:matrimony/modules/authentication/presentation/model/user_model.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/authentication_page.dart';
 import 'package:matrimony/modules/authentication/presentation/pages/splash_screen.dart';
 import 'package:matrimony/modules/home/presentation/pages/filter_page.dart';
@@ -11,32 +15,55 @@ import 'package:matrimony/utils/constants/app_style.dart';
 import 'package:matrimony/utils/constants/colors.dart';
 import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+import '../controller/home_controller.dart';
+
+class HomeScreen extends StatefulWidget {
+   HomeScreen({Key? key}) : super(key: key);
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  FirebaseAuth fireBaseAuth = FirebaseAuth.instance;
+  @override
+  void initState() {
+   Provider.of<HomeController>(context,listen: false).getAllProfiles();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthController>(
-      builder: (context, authValue, child) =>
+    return Consumer2<AuthController,HomeController>(
+      builder: (context, authValue,homeValue, child) =>
       Scaffold(
-        appBar: AppBar(backgroundColor: AppColor.backgroundColr,elevation: 0,
-        iconTheme: IconThemeData(),
-        leading:InkWell(
-          onTap: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) =>const ProfilePages(),));
-          },
-          child: const Padding(
-            padding:  EdgeInsets.all(8.0),
-            child: CircleAvatar(),
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => FilterPage(),));
-            }, 
-            icon: Icon(Icons.filter_list,color: AppColor.textGreyColor,))],
-        ),
+        appBar:AppBar(backgroundColor: AppColor.backgroundColr,elevation: 0,
+            iconTheme: IconThemeData(),
+            leading:InkWell(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) =>const ProfilePages(),));
+              },
+              child: const Padding(
+                padding:  EdgeInsets.all(8.0),
+                child: CircleAvatar(),
+              ),
+            ),
+            title: StreamBuilder(
+              stream: db.collection('Users').doc(fireBaseAuth.currentUser?.email).snapshots(),
+              builder: (context, snapshot) {
+                return CommonText(text: snapshot.data?.data()?['fullName'],
+                textStyle: AppStyle.style16w500Style,);
+              }
+            ),
+            actions: [
+              IconButton(
+                onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FilterPage(),));
+                }, 
+                icon: Icon(Icons.filter_list,color: AppColor.textGreyColor,))],
+            ),
         body: GridView.builder(
           padding: EdgeInsets.symmetric(horizontal: 10.w),
           gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
@@ -44,8 +71,9 @@ class HomeScreen extends StatelessWidget {
             crossAxisSpacing: 20.w,
             mainAxisSpacing: 20.h
           ),
-          itemCount: 10,
+          itemCount: homeValue.profileList.length,
           itemBuilder: (BuildContext context, int index) {
+            UserDataModel item  = homeValue.profileList[index];
             return Container(
               clipBehavior: Clip.hardEdge,
               decoration: BoxDecoration(
@@ -65,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                       child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CommonText(text: 'Amelia',
+                          CommonText(text: item.fullName??'',
                           textStyle: AppStyle.style16w500Style,
                           ),
                            Row(
@@ -100,7 +128,6 @@ class HomeScreen extends StatelessWidget {
           },
         ),
         floatingActionButton: FloatingActionButton(onPressed: (){
-           
            authValue.signOut().then((v) {
             Navigator.pushAndRemoveUntil(
               context, 
