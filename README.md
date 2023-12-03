@@ -29,6 +29,11 @@ flutter_screenutil: ^5.9.0
   flutter_animate: ^4.3.0
   fluttertoast: ^8.2.4
 
+
+ Architecture used:
+
+ MVC pattern  
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
