@@ -34,6 +34,9 @@ class CommonTextField extends StatelessWidget {
         focusedBorder: OutlineInputBorder(
           borderSide:const BorderSide(color: AppColor.buttonlightColor),
           borderRadius: BorderRadius.circular(30.r)),
+        focusedErrorBorder:OutlineInputBorder(
+          borderSide:const BorderSide(color: AppColor.buttondarkColor),
+          borderRadius: BorderRadius.circular(30.r)) ,  
         errorBorder: OutlineInputBorder(
           borderSide:const BorderSide(color: AppColor.buttondarkColor),
           borderRadius: BorderRadius.circular(30.r)),    

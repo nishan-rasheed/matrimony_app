@@ -1,3 +1,7 @@
+import 'package:flutter/foundation.dart';
+
 customPrint(String text){
-  print('*******$text***********');
+  if (kDebugMode) {
+    print('*******$text***********');
+  }
 }
